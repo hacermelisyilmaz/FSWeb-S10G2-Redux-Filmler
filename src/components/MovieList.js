@@ -6,7 +6,7 @@ import MovieListFooter from "./MovieListFooter";
 
 const MovieList = (props) => {
   const movies = useSelector((store) => store.movies.movies);
-
+  console.log(movies);
   return (
     <div className="flex-1">
       <div className="overflow-hidden bg-white rounded-md shadow mb-4 sm:min-h-[400px]">

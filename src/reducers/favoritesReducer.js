@@ -14,14 +14,17 @@ const favoritesReducer = (state = initialState, action) => {
     case TOGGLE_FAVORITES:
       return {
         ...state,
+        displayFavorites: !state.displayFavorites,
       };
     case ADD_FAVORITE:
       return {
         ...state,
+        favorites: [...state.favorites, action.payload],
       };
     case REMOVE_FAVORITE:
       return {
         ...state,
+        favorites: state.favorites.filter((item) => action.payload !== item.id),
       };
     default:
       return state;

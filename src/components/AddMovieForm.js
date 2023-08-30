@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addMovie } from "./../actions/movieActions";
 
@@ -16,6 +16,8 @@ const AddMovieForm = (props) => {
     description: "",
   });
 
+  const movieNumber = useSelector((store) => store.movies.movies.length);
+
   const handleChange = (e) => {
     setMovie({
       ...movie,
@@ -25,7 +27,7 @@ const AddMovieForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newMovie = { ...movie, id: Date.now() };
+    const newMovie = { ...movie, id: movieNumber };
     dispatch(addMovie(newMovie));
     push("/movies/");
   };
